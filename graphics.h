@@ -63,7 +63,7 @@ struct Graphics {
 	virtual void drawRect(int num, uint8_t color, const Point *pt, int w, int h) = 0;
 };
 
-Graphics *GraphicsGL_create();
+//Graphics *GraphicsGL_create();
 Graphics *GraphicsSoft_create();
 
 #endif

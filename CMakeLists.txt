@@ -15,7 +15,7 @@ add_executable(rawgl
         file.cpp
         file.h
         graphics.h
-        graphics_gl.cpp
+        #graphics_gl.cpp
         graphics_soft.cpp
         intern.h
         main.cpp
@@ -53,4 +53,4 @@ add_executable(rawgl
 
 find_path(SDL2_INCLUDE_DIR SDL.h PATH_SUFFIXES SDL2)
 include_directories(${SDL2_INCLUDE_DIR})
-target_link_libraries(rawgl SDL2 SDL2_mixer GL z)
+target_link_libraries(rawgl SDL2 SDL2_mixer z)
