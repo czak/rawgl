@@ -200,7 +200,7 @@ int main(int argc, char *argv[]) {
 		Graphics::_use565 = true;
 	}
 	Graphics *graphics = createGraphics(graphicsType);
-	SystemStub *stub = SystemStub_SDL_create();
+	SystemStub *stub = SystemStub_SDL1_create();
 	stub->init(e->getGameTitle(lang), &dm);
 	e->setSystemStub(stub, graphics);
 	e->setup(lang, graphicsType, scaler.name, scaler.factor);

@@ -63,5 +63,6 @@ struct SystemStub {
 };
 
 extern SystemStub *SystemStub_SDL_create();
+extern SystemStub *SystemStub_SDL1_create();
 
 #endif

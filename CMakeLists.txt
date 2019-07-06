@@ -44,6 +44,7 @@ add_executable(rawgl
         staticres.cpp
         systemstub.h
         systemstub_sdl.cpp
+        systemstub_sdl1.cpp
         unpack.cpp
         unpack.h
         util.cpp
