@@ -21,6 +21,7 @@ struct SystemStub_SDL1 : SystemStub {
 	int _screenshot;
 
 	SDL_Surface *_screen;
+	SDL_Surface *_texture;
 
 	SystemStub_SDL1();
 	virtual ~SystemStub_SDL1() {}
@@ -42,15 +43,18 @@ struct SystemStub_SDL1 : SystemStub {
 const float SystemStub_SDL1::kAspectRatio = 16.f / 10.f;
 
 SystemStub_SDL1::SystemStub_SDL1()
-	: _w(0), _h(0), _texW(0), _texH(0), _screen(0) {
+	: _w(0), _h(0), _texW(0), _texH(0), _screen(0), _texture(0) {
 }
 
 void SystemStub_SDL1::init(const char *title, const DisplayMode *dm) {
 	SDL_Init(SDL_INIT_VIDEO);
-	_screen = SDL_SetVideoMode(320, 200, 16, 0);
+	_screen = SDL_SetVideoMode(320, 200, 0, 0);
 }
 
 void SystemStub_SDL1::fini() {
+	if (_texture) {
+		SDL_FreeSurface(_texture);
+	}
 	SDL_Quit();
 }
 
@@ -65,13 +69,29 @@ void SystemStub_SDL1::prepareScreen(int &w, int &h, float ar[4]) {
 }
 
 void SystemStub_SDL1::updateScreen() {
-	SDL_UpdateRect(_screen, 0, 0, 0, 0);
+	SDL_Flip(_screen);
 }
 
 void SystemStub_SDL1::setScreenPixels565(const uint16_t *data, int w, int h) {
-	SDL_LockSurface(_screen);
-	memcpy(_screen->pixels, data, w * h * sizeof(uint16_t));
-	SDL_UnlockSurface(_screen);
+	if (!_texture) {
+		Uint32 rmask, gmask, bmask, amask;
+		rmask = 0b1111100000000000;
+		gmask = 0b0000011111100000;
+		bmask = 0b0000000000011111;
+		amask = 0;
+		_texture = SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, 16,
+				rmask, gmask, bmask, amask);
+		if (!_texture) {
+			return;
+		}
+		_texW = w;
+		_texH = h;
+	}
+	SDL_LockSurface(_texture);
+	memcpy(_texture->pixels, data, w * h * sizeof(uint16_t));
+	SDL_UnlockSurface(_texture);
+	
+	SDL_BlitSurface(_texture, NULL, _screen, NULL);
 }
 
 void SystemStub_SDL1::processEvents() {
