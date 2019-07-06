@@ -9,7 +9,7 @@
 
 #include "intern.h"
 
-//struct Mixer;
+struct Mixer;
 struct Resource;
 struct SfxPlayer;
 struct SystemStub;
@@ -41,7 +41,7 @@ struct Script {
 	static const OpcodeStub _opTable[];
 	static const uint16_t _freqTable[];
 
-	//Mixer *_mix;
+	Mixer *_mix;
 	Resource *_res;
 	SfxPlayer *_ply;
 	Video *_vid;
@@ -59,7 +59,7 @@ struct Script {
 	bool _is3DO;
 	uint32_t _startTime, _timeStamp;
 
-	Script(Resource *res, SfxPlayer *ply, Video *vid);
+	Script(Mixer *mix, Resource *res, SfxPlayer *ply, Video *vid);
 	void init();
 	
 	void op_movConst();

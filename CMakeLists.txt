@@ -19,6 +19,7 @@ add_executable(rawgl
         graphics_soft.cpp
         intern.h
         main.cpp
+        # mixer.cpp
         mixer_sdl1.cpp
         mixer.h
         pak.cpp

@@ -29,7 +29,7 @@ struct Engine {
 	Graphics *_graphics;
 	SystemStub *_stub;
 	Script _script;
-	//Mixer _mix;
+	Mixer _mix;
 	Resource _res;
 	SfxPlayer _ply;
 	Video _vid;
