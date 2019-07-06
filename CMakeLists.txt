@@ -52,4 +52,4 @@ add_executable(rawgl
         video.cpp
         video.h)
 
-target_link_libraries(rawgl SDL2 z)
+target_link_libraries(rawgl SDL SDL2 z)
