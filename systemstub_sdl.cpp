@@ -4,7 +4,7 @@
  * Copyright (C) 2004-2005 Gregory Montoir (cyx@users.sourceforge.net)
  */
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "graphics.h"
 #include "systemstub.h"
 #include "util.h"

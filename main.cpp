@@ -4,7 +4,6 @@
  * Copyright (C) 2004-2005 Gregory Montoir (cyx@users.sourceforge.net)
  */
 
-#include <SDL.h>
 #include <getopt.h>
 #include <sys/stat.h>
 #include "engine.h"

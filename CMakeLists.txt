@@ -52,6 +52,4 @@ add_executable(rawgl
         video.cpp
         video.h)
 
-find_path(SDL2_INCLUDE_DIR SDL.h PATH_SUFFIXES SDL2)
-include_directories(${SDL2_INCLUDE_DIR})
 target_link_libraries(rawgl SDL2 z)
