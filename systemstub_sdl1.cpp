@@ -47,7 +47,7 @@ SystemStub_SDL1::SystemStub_SDL1()
 
 void SystemStub_SDL1::init(const char *title, const DisplayMode *dm) {
 	SDL_Init(SDL_INIT_VIDEO);
-	_screen = SDL_SetVideoMode(320, 200, 0, 0);
+	_screen = SDL_SetVideoMode(320, 200, 16, 0);
 }
 
 void SystemStub_SDL1::fini() {
@@ -69,7 +69,9 @@ void SystemStub_SDL1::updateScreen() {
 }
 
 void SystemStub_SDL1::setScreenPixels565(const uint16_t *data, int w, int h) {
-	SDL_FillRect(_screen, NULL, 0xff00ff);
+	SDL_LockSurface(_screen);
+	memcpy(_screen->pixels, data, w * h * sizeof(uint16_t));
+	SDL_UnlockSurface(_screen);
 }
 
 void SystemStub_SDL1::processEvents() {
