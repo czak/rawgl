@@ -48,7 +48,7 @@ SystemStub_SDL1::SystemStub_SDL1()
 
 void SystemStub_SDL1::init(const char *title, const DisplayMode *dm) {
 	SDL_Init(SDL_INIT_VIDEO);
-	_screen = SDL_SetVideoMode(320, 200, 0, 0);
+	_screen = SDL_SetVideoMode(320, 200, 0, SDL_DOUBLEBUF);
 }
 
 void SystemStub_SDL1::fini() {
