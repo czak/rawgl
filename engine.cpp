@@ -13,7 +13,7 @@
 
 
 Engine::Engine(const char *dataDir, int partNum)
-	: _graphics(0), _stub(0), _script(&_mix, &_res, &_ply, &_vid), _mix(&_ply), _res(&_vid, dataDir),
+	: _graphics(0), _stub(0), _script(&_res, &_ply, &_vid), _res(&_vid, dataDir),
 	_ply(&_res), _vid(&_res), _partNum(partNum) {
 	_res.detectVersion();
 }
@@ -51,7 +51,7 @@ void Engine::run() {
 		_script.updateInput();
 		processInput();
 		_script.runTasks();
-		_mix.update();
+		//_mix.update();
 		break;
 	}
 }
@@ -83,7 +83,7 @@ void Engine::setup(Language lang, int graphicsType, const char *scalerName, int 
 		_vid.setDefaultFont();
 	}
 	_script.init();
-	_mix.init();
+	//_mix.init();
 	if (_res.getDataType() == Resource::DT_DOS || _res.getDataType() == Resource::DT_AMIGA || _res.getDataType() == Resource::DT_MAC) {
 		switch (lang) {
 		case LANG_FR:
@@ -111,7 +111,7 @@ void Engine::setup(Language lang, int graphicsType, const char *scalerName, int 
 void Engine::finish() {
 	_graphics->fini();
 	_ply.stop();
-	_mix.quit();
+	//_mix.quit();
 	_res.freeMemBlock();
 }
 
