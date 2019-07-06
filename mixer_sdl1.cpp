@@ -4,9 +4,9 @@
  * Copyright (C) 2004-2005 Gregory Montoir (cyx@users.sourceforge.net)
  */
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 #define MIX_INIT_FLUIDSYNTH MIX_INIT_MID // renamed with SDL2_mixer >= 2.0.2
-#include <SDL_mixer.h>
+#include <SDL/SDL_mixer.h>
 #include "aifcplayer.h"
 #include "file.h"
 #include "mixer.h"

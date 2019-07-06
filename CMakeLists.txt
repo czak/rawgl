@@ -19,8 +19,8 @@ add_executable(rawgl
         graphics_soft.cpp
         intern.h
         main.cpp
-        #mixer.cpp
-        #mixer.h
+        mixer_sdl1.cpp
+        mixer.h
         pak.cpp
         pak.h
         resource.cpp
@@ -43,7 +43,7 @@ add_executable(rawgl
         sfxplayer.h
         staticres.cpp
         systemstub.h
-        systemstub_sdl.cpp
+        # systemstub_sdl.cpp
         systemstub_sdl1.cpp
         unpack.cpp
         unpack.h
@@ -52,4 +52,4 @@ add_executable(rawgl
         video.cpp
         video.h)
 
-target_link_libraries(rawgl SDL SDL2 z)
+target_link_libraries(rawgl SDL SDL_mixer z)
