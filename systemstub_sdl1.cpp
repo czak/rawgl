@@ -47,7 +47,7 @@ SystemStub_SDL1::SystemStub_SDL1()
 
 void SystemStub_SDL1::init(const char *title, const DisplayMode *dm) {
 	SDL_Init(SDL_INIT_VIDEO);
-	_screen = SDL_SetVideoMode(320, 200, 32, 0);
+	_screen = SDL_SetVideoMode(320, 200, 0, 0);
 }
 
 void SystemStub_SDL1::fini() {
@@ -55,12 +55,21 @@ void SystemStub_SDL1::fini() {
 }
 
 void SystemStub_SDL1::prepareScreen(int &w, int &h, float ar[4]) {
+	w = _w;
+	h = _h;
+	ar[0] = _aspectRatio[0];
+	ar[1] = _aspectRatio[1];
+	ar[2] = _aspectRatio[2];
+	ar[3] = _aspectRatio[3];
+	// TODO: CLEAR?
 }
 
 void SystemStub_SDL1::updateScreen() {
+	SDL_UpdateRect(_screen, 0, 0, 0, 0);
 }
 
 void SystemStub_SDL1::setScreenPixels565(const uint16_t *data, int w, int h) {
+	SDL_FillRect(_screen, NULL, 0xff00ff);
 }
 
 void SystemStub_SDL1::processEvents() {
