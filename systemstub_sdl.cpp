@@ -58,7 +58,7 @@ void SystemStub_SDL::init(const char *title, const DisplayMode *dm) {
 	int windowH = 0;
 	int flags = dm->opengl ? SDL_WINDOW_OPENGL : 0;
 	if (dm->mode == DisplayMode::WINDOWED) {
-		flags |= SDL_WINDOW_RESIZABLE;
+		//flags |= SDL_WINDOW_RESIZABLE;
 		windowW = dm->width;
 		windowH = dm->height;
 	} else {
