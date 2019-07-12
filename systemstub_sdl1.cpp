@@ -115,14 +115,14 @@ void SystemStub_SDL1::processEvents() {
 			case SDLK_DOWN:
 				_pi.dirMask &= ~PlayerInput::DIR_DOWN;
 				break;
-			case SDLK_SPACE:
-			case SDLK_RETURN:
+			case SDLK_LCTRL:
 				_pi.button = false;
 				break;
 			case SDLK_s:
 				_pi.screenshot = true;
 				break;
 			case SDLK_c:
+			case SDLK_ESCAPE:
 				_pi.code = true;
 				break;
 			case SDLK_p:
@@ -159,9 +159,11 @@ void SystemStub_SDL1::processEvents() {
 			case SDLK_DOWN:
 				_pi.dirMask |= PlayerInput::DIR_DOWN;
 				break;
-			case SDLK_SPACE:
-			case SDLK_RETURN:
+			case SDLK_LCTRL:
 				_pi.button = true;
+				break;
+			case SDLK_END:
+				_pi.quit = true;
 				break;
 			default:
 				break;
